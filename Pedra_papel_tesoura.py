@@ -1,6 +1,13 @@
-
-
 from random import randint 
+
+def jogada_computador():
+    numero = randint(1, 3)
+    if numero == 1:
+        return 'pedra'
+    elif numero == 2:
+        return 'papel'
+    else:
+        return 'tesoura'
 
 
 total_rodadas = int(input('Rodadas jogadas: '))
@@ -9,48 +16,39 @@ pontuacao_total = 0
 cont = 0
 
 while cont < total_rodadas:
-    cont +=1 
+    cont += 1 
 
     escolha_usuario = input('Pedra, Papel ou Tesoura?: ')
+    sorteio = jogada_computador()
 
-    numero = randint(1,3)
+    print(f'Computador: {sorteio}')
 
-    if numero == 1:
-        sorteio = 'Pedra'
-    elif numero == 2:
-        sorteio = 'Papel'
-    elif numero == 3:
-        sorteio = 'Tesoura'
+    if escolha_usuario == sorteio:
+        print('Empate')
 
-    print(sorteio)
-
-    if escolha_usuario == 'Pedra':
-        if sorteio == 'Pedra':
-            print('Empate')
-        elif sorteio == 'Papel':
+    elif escolha_usuario == 'pedra':
+        if sorteio == 'papel':
             print('Derrota')
         else:
             print('Vitoria')
-            pontuacao_total +=1
+            pontuacao_total += 1
 
-    if escolha_usuario == 'Papel':
-        if sorteio == 'Papel':
-            print('Empate')
-        elif sorteio == 'Tesoura':
+    elif escolha_usuario == 'papel':
+        if sorteio == 'tesoura':
             print('Derrota')
         else:
             print('Vitoria')
-            pontuacao_total +=1
+            pontuacao_total += 1
 
-
-    if escolha_usuario == 'Tesoura':
-        if sorteio == 'Tesoura':
-            print('Empate')
-        elif sorteio == 'Pedra':
+    elif escolha_usuario == 'tesoura':
+        if sorteio == 'pedra':
             print('Derrota')
         else:
             print('Vitoria')
-            pontuacao_total +=1
+            pontuacao_total += 1
+
+    else:
+        print('Jogada inválida!')
 
 print('\nFIM DE JOGO')
 print(f'Pontuação total: {pontuacao_total}')
